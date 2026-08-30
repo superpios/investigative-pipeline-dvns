@@ -29,7 +29,7 @@ Collegato a:
 | Auditabile | Log GHA + `scripts/audit_output.py` + manifest |
 
 Alternative complementari (dopo ranking):
-- Chiamata on-demand a **Groq** sulle top 5–10 piste per bozza di verifica (solo quando vuoi).
+- Chiamata on-demand a **Groq** sulle top 5–10 piste per bozza di verifica (solo quando serve).
 - Cloudflare Workers / Pages per esporre il feed statico.
 
 ---
@@ -37,15 +37,15 @@ Alternative complementari (dopo ranking):
 ## Uso locale (smoke test con fixture)
 
 ```bash
-git clone <questo-repo> dvns-pipeline
-cd dvns-pipeline
+git clone https://github.com/superpios/investigative-pipeline-dvns
+cd investigative-pipeline-dvns
 chmod +x scripts/run_pipeline.sh
 ./scripts/run_pipeline.sh --fixture
 ```
 
 Output in `output/ranked/ranked_leads.json` e `output/ranked/feed.md`.
 
-Per dati reali dell’Explorer:
+Per dati reali dell'Explorer:
 
 ```bash
 ./scripts/run_pipeline.sh
@@ -57,7 +57,7 @@ RELATIONS_DIR=/path/to/explorer/data/relations ./scripts/run_pipeline.sh
 
 ## Uso su GitHub Actions (produzione)
 
-1. Crea un repository pubblico (es. `superpios/dvns-pipeline` o aggiungi i file a uno esistente).
+1. Crea un repository pubblico (es. `superpios/investigative-pipeline-dvns`).
 2. Copia il contenuto di questa cartella.
 3. Abilita Actions.
 4. Il workflow `.github/workflows/pipeline.yml`:
@@ -88,7 +88,7 @@ Ogni pista contiene sempre: `id`, `title`, `observed_facts`, `sources`, `period`
 
 Vedi `docs/AUDIT.md` per il report completo.
 
-Sintesi dei test eseguiti su questo pacchetto (30 ago 2026):
+Sintesi dei test eseguiti (30 ago 2026):
 
 | Test | Esito |
 |------|-------|
@@ -100,16 +100,7 @@ Sintesi dei test eseguiti su questo pacchetto (30 ago 2026):
 | Schema obbligatorio + disclaimer | PASS |
 | Nessuna etichetta valutativa proibita | PASS |
 
-**Nota ranking**: le euristiche di score leggono i `observed_facts`. Con le regole attuali REGOLA-002 (9 affidamenti) ottiene score > 0; REGOLA-001/003 possono restare a 0 se le keyword non matchano — comportamento conservativo documentato in `ranking_v0.1.yaml`.
-
----
-
-## Prossimi passi consigliati
-
-1. Validare manualmente ≥ 20–30 piste su dati reali prima di considerare le regole “stabili”.
-2. Collegare il feed al sito dovevannoinostrisoldi.com (pagina sola lettura + disclaimer).
-3. Opzionale: job post-ranking che invia le top N a Groq per bozza di verifica (API key in secrets).
-4. Integrazione futura con segnalazioni cittadine (stesso CIG/ente/nominativo).
+**Nota ranking**: le euristiche di score leggono gli `observed_facts`. Con le regole attuali REGOLA-002 (9 affidamenti) ottiene score > 0; REGOLA-001/003 possono restare a 0 se le keyword non matchano — comportamento conservativo documentato in `ranking_v0.1.yaml`.
 
 ---
 
