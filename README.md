@@ -1,42 +1,62 @@
-Investigative Pipeline · DVNS
+# Investigative Pipeline · DVNS
+
+
 
 Pipeline automatica end-to-end che collega i tre componenti investigativi:
 
+
+
 Explorer → Leads Generator → Alert Engine
 
-Produce un feed prioritizzato di piste conservative a partire dalle relazioni documentate sui dati pubblici di DoveVannoINostriSoldi.
+Produce un feed prioritizzato di **piste conservative** a partire dalle relazioni documentate sui dati pubblici di [DoveVannoINostriSoldi](https://github.com/Italian-Builders-Org/DoveVannoINostriSoldi).
 
-Ogni output è un segnale quantitativo che merita verifica umana.
+
+
+Ogni output è un segnale quantitativo che **merita verifica umana**.  
+
 Nessuna conclusione automatica di illecito, spreco, frode o responsabilità individuale.
 
-Componenti collegati
 
-Componente
 
-Ruolo
+## Componenti collegati
 
-investigative-explorer-dvns
 
-Relazioni documentate da dati pubblici
 
-investigative-leads-generator
+| Componente | Ruolo |
 
-Piste conservative (regole dichiarative, fail-closed)
+|------------|--------|
 
-investigative-alert-engine
+| [investigative-explorer-dvns](https://github.com/superpios/investigative-explorer-dvns) | Relazioni documentate da dati pubblici |
 
-Ranking, storico e feed prioritizzato
+| [investigative-leads-generator](https://github.com/superpios/investigative-leads-generator) | Piste conservative (regole dichiarative, fail-closed) |
 
-Cosa fa
+| [investigative-alert-engine](https://github.com/superpios/investigative-alert-engine) | Ranking, storico e feed prioritizzato |
 
-1.  Adatta le tabelle di relazione dell’Explorer
-2.  Applica le regole del Leads Generator
-3.  Esegue il ranking dell’Alert Engine
-4.  Aggiorna lo storico e pubblica il feed (ranked_leads.json, feed.md)
 
-Il ciclo è deterministico e fail-closed: stesso input → stesso output; input non validi interrompono la pipeline senza inventare risultati.
 
-Uso locale
+## Cosa fa
+
+
+
+1. Adatta le tabelle di relazione dell’Explorer
+
+2. Applica le regole del Leads Generator
+
+3. Esegue il ranking dell’Alert Engine
+
+4. Aggiorna lo storico e pubblica il feed (`ranked_leads.json`, `feed.md`)
+
+
+
+Il ciclo è **deterministico** e **fail-closed**: stesso input → stesso output; input non validi interrompono la pipeline senza inventare risultati.
+
+
+
+## Uso locale
+
+
+
+```bash
 
 git clone https://github.com/superpios/investigative-pipeline-dvns.git
 
@@ -108,11 +128,3 @@ Principi
 Licenza
 
 GNU Affero General Public License v3.0 — allineata ai componenti collegati.
-Questo coordinator (workflow + script di orchestrazione) è rilasciato sotto la stessa licenza per coerenza, salvo diversa indicazione nei file.
-
----
-
-## Disclaimer
-
-Questo non dimostra alcun illecito. Indica solo concentrazioni quantitative che meritano verifica umana.  
-I dati trattati sono pubblici; nessun dato personale non già pubblicato nelle fonti ufficiali viene introdotto dalla pipeline.
