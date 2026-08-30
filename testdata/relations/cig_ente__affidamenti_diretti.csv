@@ -1,0 +1,5 @@
+subject_key,object_key,period,ipa,source_dataset,source_record_id,source_url,acquisition_date,note_source
+Z1234567890,COMUNE DI ROMA,2025,c_h501,cig_test,c001,https://example.it/c1,2025-07-01,
+Z1234567890,COMUNE DI MILANO,2025,c_f205,cig_test,c002,https://example.it/c2,2025-07-01,
+Z1234567890,COMUNE DI NAPOLI,2025,c_f839,cig_test,c003,https://example.it/c3,2025-07-01,
+Y9876543210,COMUNE DI ROMA,2025,c_h501,cig_test,c004,https://example.it/c4,2025-07-01,

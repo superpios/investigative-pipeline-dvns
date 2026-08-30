@@ -1,0 +1,61 @@
+{
+  "status": "ok",
+  "errors": [],
+  "inputs": [
+    {
+      "file": "incarichi.csv",
+      "present": true,
+      "readable": true,
+      "rows": 7,
+      "sha256": "5d7be5a43e97c98c455a06f4385db03b5ff34a47a6a40050bba847ac6736724e",
+      "required_columns": [
+        "entity_id",
+        "person_name",
+        "year"
+      ],
+      "required_columns_present": true,
+      "rows_used": 7,
+      "rows_discarded": 0,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "file": "affidamenti_diretti.csv",
+      "present": true,
+      "readable": true,
+      "rows": 10,
+      "sha256": "ac19ff6584602b6bb5cf26e4b638f93ae9b84e70bb34d55e5d512cab799e89eb",
+      "required_columns": [
+        "award_date",
+        "awardee",
+        "entity_id",
+        "procedure_type"
+      ],
+      "required_columns_present": true,
+      "rows_used": 10,
+      "rows_discarded": 0,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "file": "cig_enti.csv",
+      "present": true,
+      "readable": true,
+      "rows": 4,
+      "sha256": "73dd558b6418f5176f0d3c46bf889bf6bc6026cee4a89525bfb9c314c2aed8f2",
+      "required_columns": [
+        "cig",
+        "subject_id"
+      ],
+      "required_columns_present": true,
+      "rows_used": 4,
+      "rows_discarded": 0,
+      "status": "ok",
+      "error": null
+    }
+  ],
+  "leads_count": 3,
+  "data_through": "2025-08-15",
+  "snapshot_created_at": "2025-07-01",
+  "explorer_sha256": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad"
+}

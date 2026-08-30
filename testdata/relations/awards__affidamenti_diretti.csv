@@ -1,0 +1,11 @@
+subject_key,object_key,period,ipa,source_dataset,source_record_id,source_url,acquisition_date,note_source
+ACME SRL,COMUNE DI ROMA,2025-01-15,c_h501,awards_test,a001,https://example.it/a1,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-02-20,c_h501,awards_test,a002,https://example.it/a2,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-03-10,c_h501,awards_test,a003,https://example.it/a3,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-04-05,c_h501,awards_test,a004,https://example.it/a4,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-05-12,c_h501,awards_test,a005,https://example.it/a5,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-06-18,c_h501,awards_test,a006,https://example.it/a6,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-07-22,c_h501,awards_test,a007,https://example.it/a7,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-08-01,c_h501,awards_test,a008,https://example.it/a8,2025-07-01,
+ACME SRL,COMUNE DI ROMA,2025-08-15,c_h501,awards_test,a009,https://example.it/a9,2025-07-01,
+BETA SPA,COMUNE DI MILANO,2025-03-01,c_f205,awards_test,a010,https://example.it/a10,2025-07-01,

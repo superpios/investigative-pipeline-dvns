@@ -1,0 +1,8 @@
+output/repos/
+output/input/
+output/leads/
+output/ranked/
+output/history/
+__pycache__/
+*.pyc
+.venv/

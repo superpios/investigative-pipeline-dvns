@@ -1,0 +1,244 @@
+# DVNS Investigative Pipeline — end-to-end
+# Explorer relations → Leads Generator → Alert Engine ranking
+#
+# Public repo = unlimited free GitHub Actions minutes.
+# Schedule: daily 03:00 UTC + manual workflow_dispatch.
+#
+# Philosophy (binding):
+#   Every output is a quantitative signal that merits human verification.
+#   No automatic conclusion of wrongdoing, waste, fraud or individual liability.
+
+name: DVNS Investigative Pipeline
+
+on:
+  schedule:
+    # Every day at 03:00 UTC (adjust as needed)
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      use_fixture_data:
+        description: "Use synthetic fixture data (for smoke test) instead of live Explorer relations"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      skip_publish:
+        description: "Skip committing ranked feed to data branch"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+# Prevent concurrent runs from overlapping
+concurrency:
+  group: dvns-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # needed only if publishing to data branch / gh-pages
+
+env:
+  PYTHON_VERSION: "3.11"
+  # Pin clones to main; change to a tag/SHA for stricter reproducibility
+  EXPLORER_REF: main
+  LEADS_REF: main
+  ALERT_REF: main
+
+jobs:
+  pipeline:
+    name: Run full investigative cycle
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout coordinator (this repo)
+        uses: actions/checkout@v4
+        with:
+          path: coordinator
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install shared dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "pyyaml>=6.0" "pandas>=2.0"
+
+      - name: Clone investigative-explorer-dvns
+        if: ${{ github.event.inputs.use_fixture_data != 'true' }}
+        run: |
+          git clone --depth 1 --branch "${{ env.EXPLORER_REF }}" \
+            https://github.com/superpios/investigative-explorer-dvns.git explorer
+          echo "Explorer relations present:"
+          ls -la explorer/data/relations/ | head -30
+
+      - name: Clone investigative-leads-generator
+        run: |
+          git clone --depth 1 --branch "${{ env.LEADS_REF }}" \
+            https://github.com/superpios/investigative-leads-generator.git leads
+
+      - name: Clone investigative-alert-engine
+        run: |
+          git clone --depth 1 --branch "${{ env.ALERT_REF }}" \
+            https://github.com/superpios/investigative-alert-engine.git alert
+
+      - name: Prepare workspace
+        run: |
+          mkdir -p work/{input,leads,ranked,history}
+          # Carry over previous history if published in this repo (optional)
+          if [ -d coordinator/data/history ]; then
+            cp -a coordinator/data/history/. work/history/ || true
+          fi
+
+      - name: Select relations source
+        id: relations
+        run: |
+          if [ "${{ github.event.inputs.use_fixture_data }}" = "true" ]; then
+            REL="coordinator/testdata/relations"
+            echo "Using fixture data: $REL"
+          else
+            REL="explorer/data/relations"
+            echo "Using live Explorer relations: $REL"
+          fi
+          # Sanity: required CSVs must exist (or pipeline will fail-closed later)
+          for f in persona_incarico_ente__incarichi_nominativi_shard.csv \
+                   awards__affidamenti_diretti.csv \
+                   cig_ente__affidamenti_diretti.csv; do
+            if [ ! -f "$REL/$f" ]; then
+              echo "::warning::Missing relation file: $f (adapter will skip it)"
+            fi
+          done
+          echo "path=$REL" >> "$GITHUB_OUTPUT"
+
+      - name: Step 1 — Adapt Explorer relations → generator input
+        run: |
+          python leads/scripts/adapt_explorer.py \
+            --relations "${{ steps.relations.outputs.path }}" \
+            --output work/input
+          echo "Adapted input files:"
+          ls -la work/input/
+          wc -l work/input/*.csv || true
+
+      - name: Step 2 — Generate conservative leads
+        run: |
+          set +e
+          python leads/scripts/apply_rules.py \
+            --input work/input \
+            --output work/leads \
+            --rules leads/rules/rules_v0.1.yaml
+          rc=$?
+          set -e
+          echo "apply_rules exit code: $rc"
+          if [ -f work/leads/manifest.json ]; then
+            echo "Manifest:"
+            cat work/leads/manifest.json
+          fi
+          # Fail-closed on broken input (exit 1) is intentional and should fail the job
+          if [ $rc -ne 0 ]; then
+            echo "::error::Leads generator failed (fail-closed on invalid input). See manifest."
+            exit $rc
+          fi
+          # Zero leads is a valid conservative outcome (exit 0)
+          ls -la work/leads/ || true
+
+      - name: Step 3 — Rank leads + update history
+        run: |
+          # rank_leads exits 0 even with zero leads (fail-closed content)
+          python alert/scripts/rank_leads.py \
+            --input work/leads \
+            --output work/ranked \
+            --history work/history \
+            --rules alert/rules/ranking_v0.1.yaml
+          ls -la work/ranked/ work/history/ || true
+          if [ -f work/ranked/ranked_leads.json ]; then
+            python -c "
+          import json
+          r = json.load(open('work/ranked/ranked_leads.json'))
+          print(f'Ranked leads: {len(r)}')
+          for L in r[:10]:
+              print(f\"  #{L.get('rank_position')} score={L.get('priority_score')} {L.get('id')} | {L.get('title','')[:70]}\")
+          "
+          else
+            echo "No ranked_leads.json (zero leads or fail-closed). OK."
+          fi
+
+      - name: Step 4 — Export human-readable feed (optional)
+        run: |
+          if [ -f work/ranked/ranked_leads.json ]; then
+            python alert/scripts/export_feed.py \
+              --input work/ranked \
+              --output work/ranked/feed.md || echo "export_feed skipped/failed (non-fatal)"
+          fi
+          ls -la work/ranked/ || true
+
+      - name: Audit checks (schema + disclaimer + determinism marker)
+        run: |
+          python coordinator/scripts/audit_output.py \
+            --ranked work/ranked/ranked_leads.json \
+            --manifest work/leads/manifest.json \
+            --history work/history || true
+          # Soft audit: do not fail the whole job on zero leads
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dvns-ranked-${{ github.run_id }}
+          path: |
+            work/ranked/
+            work/history/
+            work/leads/manifest.json
+            work/leads/leads_v0.1.json
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Publish ranked feed to data branch
+        if: ${{ github.event.inputs.skip_publish != 'true' && github.ref == 'refs/heads/main' }}
+        run: |
+          if [ ! -f work/ranked/ranked_leads.json ]; then
+            echo "Nothing to publish."
+            exit 0
+          fi
+          # Commit only the public outputs into a dedicated branch for consumption by the website
+          git config --global user.name "dvns-pipeline-bot"
+          git config --global user.email "pipeline@users.noreply.github.com"
+          # Use a worktree-like approach on the same checkout
+          mkdir -p coordinator/data/ranked coordinator/data/history
+          cp -a work/ranked/. coordinator/data/ranked/
+          cp -a work/history/. coordinator/data/history/
+          cd coordinator
+          git add data/ranked data/history
+          if git diff --staged --quiet; then
+            echo "No changes to publish."
+          else
+            git commit -m "chore(pipeline): ranked feed $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+            git push origin HEAD:main || git push origin HEAD:data || true
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## DVNS Pipeline summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f work/leads/manifest.json ]; then
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat work/leads/manifest.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f work/ranked/ranked_leads.json ]; then
+            N=$(python -c "import json; print(len(json.load(open('work/ranked/ranked_leads.json'))))")
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Ranked leads:** $N" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Artifact: \`dvns-ranked-${{ github.run_id }}\`" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No ranked output (zero leads or fail-closed)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "> Ogni pista è un segnale quantitativo che merita verifica umana. Nessuna conclusione automatica di illecito." >> "$GITHUB_STEP_SUMMARY"

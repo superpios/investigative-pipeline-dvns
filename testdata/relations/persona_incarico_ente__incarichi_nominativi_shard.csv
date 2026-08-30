@@ -1,0 +1,8 @@
+subject_key,object_key,period,ipa,source_dataset,source_record_id,fonte_url,acquisition_date,note_source
+MARIO ROSSI,COMUNE DI ROMA,2025,c_h501,incarichi_test,rec001,https://example.it/fonte1,2025-06-01,
+MARIO ROSSI,COMUNE DI MILANO,2025,c_f205,incarichi_test,rec002,https://example.it/fonte2,2025-06-01,
+MARIO ROSSI,COMUNE DI NAPOLI,2025,c_f839,incarichi_test,rec003,https://example.it/fonte3,2025-06-01,
+MARIO ROSSI,COMUNE DI TORINO,2025,c_l219,incarichi_test,rec004,https://example.it/fonte4,2025-06-01,
+MARIO ROSSI,COMUNE DI FIRENZE,2025,c_d612,incarichi_test,rec005,https://example.it/fonte5,2025-06-01,
+MARIO ROSSI,COMUNE DI BOLOGNA,2025,c_a944,incarichi_test,rec006,https://example.it/fonte6,2025-06-01,
+LUIGI BIANCHI,COMUNE DI ROMA,2025,c_h501,incarichi_test,rec007,https://example.it/fonte7,2025-06-01,
