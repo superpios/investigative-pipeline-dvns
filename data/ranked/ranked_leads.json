@@ -1,73 +1,91 @@
 [
   {
-    "id": "LEAD-REGOLA-002-f6d2b63bce",
-    "title": "Aggiudicatario riceve 9 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2025-08-15)",
+    "id": "LEAD-REGOLA-002-4458183d69",
+    "title": "Aggiudicatario riceve 12 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)",
     "observed_facts": [
-      "Aggiudicatario: ACME SRL",
-      "Ente: c_h501",
-      "Numero di affidamenti diretti: 9",
-      "Finestra di osservazione: 12 mesi mobili fino al 2025-08-15",
+      "Aggiudicatario: INFRASTRUTTURE MILANO CORTINA 2020-2026 S.P.A.",
+      "Ente: m_inf",
+      "Numero di affidamenti diretti: 12",
+      "Finestra di osservazione: 12 mesi mobili fino al 2026-08-12",
       "Soglia della regola: >= 8"
     ],
     "sources": [
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a001",
-        "source_url": "https://example.it/a1",
-        "award_date": "2025-01-15"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "dcb3f8973409c37b7298bcdd337590fce0365aa90c61f9417ae91d7519924f62",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_16391_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a002",
-        "source_url": "https://example.it/a2",
-        "award_date": "2025-02-20"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "5e739d3d195a555025502bbeeaa71efb48140d8c068da84bddcff4b31f598330",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17127_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a003",
-        "source_url": "https://example.it/a3",
-        "award_date": "2025-03-10"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "63b010ee6210c13e27ee0f43dba00cf5caa4258d2c5c7cf4e1d1cdbfd24c188d",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17302_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a004",
-        "source_url": "https://example.it/a4",
-        "award_date": "2025-04-05"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "5a70fc0e15aa49c3ca9a0d94758461b93eea5d424ae2cbb27e7fb732af30d641",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17777_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a005",
-        "source_url": "https://example.it/a5",
-        "award_date": "2025-05-12"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "4d6b571562900e1e3e56de745120d599279d987d23268943c2bb9e4ef5f470da",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17779_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a006",
-        "source_url": "https://example.it/a6",
-        "award_date": "2025-06-18"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "4d478f397d71f13dc928a58b6068eedfb3c7f0f6f02bcbee9b6fc7207f32ced4",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17827_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a007",
-        "source_url": "https://example.it/a7",
-        "award_date": "2025-07-22"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "eaf7e042f0dfc21728c48f8ed3ee7bcf2c6ccde4e52e3b8414deceeebda22280",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_17869_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a008",
-        "source_url": "https://example.it/a8",
-        "award_date": "2025-08-01"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "5d6dad5ba40763dfc40fae9873430894382ddaef39c511b238a119c47c001faf",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_18385_566_1.html",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "awards_test",
-        "source_record_id": "a009",
-        "source_url": "https://example.it/a9",
-        "award_date": "2025-08-15"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "2203e3c7f0d273438a173ee791d473ea8a72133343c95503160cf32ab3381627",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_19184_566_1.html",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "1ed9f36378cf911660c2cfb1ad3a08245a6df602490ac20ff11db8eae81a23ff",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_19642_566_1.html",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "5a7ac9434944d66adc4932258394c95f383e0c822b9b045567786ddb66fe0b62",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_21226_566_1.html",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "e4bf592ea922b01aa5e3a732cdcb6b1631d255adc73e7caf8ec691a3d45066dd",
+        "source_url": "https://trasparenza.mit.gov.it/archivio105_procedure-dal-01012024_0_22242_566_1.html",
+        "award_date": "2026-01-01"
       }
     ],
-    "period": "2024-08-15..2025-08-15",
+    "period": "2025-08-12..2026-08-12",
     "rule_id": "REGOLA-002",
-    "why_worth_checking": "Lo stesso aggiudicatario riceve 9 affidamenti diretti dallo stesso ente nei 12 mesi mobili fino al 2025-08-15 (soglia >= 8).",
+    "why_worth_checking": "Lo stesso aggiudicatario riceve 12 affidamenti diretti dallo stesso ente nei 12 mesi mobili fino al 2026-08-12 (soglia >= 8).",
     "what_cannot_be_claimed": [
       "Nessuna responsabilità individuale",
       "Nessun illecito, frode, corruzione o spreco",
@@ -75,67 +93,92 @@
       "Nessun confronto tra perimetri contabili diversi"
     ],
     "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
-    "data_through": "2025-08-15",
-    "snapshot_created_at": "2025-07-01",
-    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
-    "priority_score": 18.2,
+    "data_through": "2026-08-12",
+    "snapshot_created_at": "2026-08-25",
+    "explorer_sha": "38fadd790442701322b57b357074df2be178da2a92e9b4a883912fd40bbcc8eb",
+    "priority_score": 25.0,
     "priority_reasons": [
-      "affidamenti diretti ripetuti: 9"
+      "affidamenti diretti ripetuti: 12"
     ],
-    "ranking_date": "2025-08-15",
+    "ranking_date": "2026-08-12",
     "ranking_version": "0.1",
     "rank_position": 1
   },
   {
-    "id": "LEAD-REGOLA-001-d5dfcc9955",
-    "title": "Nominativo presente in 6 incarichi su enti diversi – anno 2025",
+    "id": "LEAD-REGOLA-002-d38732c5f5",
+    "title": "Aggiudicatario riceve 10 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)",
     "observed_facts": [
-      "Nominativo normalizzato: MARIO ROSSI",
-      "Numero di enti distinti: 6",
-      "Anno solare: 2025",
-      "Soglia della regola: >= 5"
+      "Aggiudicatario: DOTT.SSA RAFFAELLA CUGINI",
+      "Ente: aifa_rm",
+      "Numero di affidamenti diretti: 10",
+      "Finestra di osservazione: 12 mesi mobili fino al 2026-08-12",
+      "Soglia della regola: >= 8"
     ],
     "sources": [
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec001",
-        "source_url": "https://example.it/fonte1",
-        "entity_id": "c_h501"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "1e5d235d36a4ac0a53523011889362420f3b848b9acc2c22ac675b6632de3b24",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3657901/Mobilgraf_Det-aut-aff-diretto_06.05.2026.zip",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec002",
-        "source_url": "https://example.it/fonte2",
-        "entity_id": "c_f205"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "bb3f4d9b3a3ceca200eba713c9e43ac71590510f9edcce8bc87421489c06aa10",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3380201/CIG-BA44AF256_Det-aut-aff-diretto_06.02.2026.zip",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec003",
-        "source_url": "https://example.it/fonte3",
-        "entity_id": "c_f839"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "011e25b38fa233e53ff7b708d18a2840bd56317cc376e681b47778876ddb831d",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3696901/CIG-BB837CBFAA_Det-aut-aff-diretto_18.05.2026.zip",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec004",
-        "source_url": "https://example.it/fonte4",
-        "entity_id": "c_l219"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "07d84b219b0102370d837d2aea8b813b8f375d72ec90a6221fd7e160cd9cf406",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3774601/CIGBBFA21EBA0_det_all_12.06.2026.zip",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec005",
-        "source_url": "https://example.it/fonte5",
-        "entity_id": "c_d612"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "9a8f254db8906b36340a18166b085c20c0e346fa8549b44971c6eecec7e688a0",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3526701/CIGBADFC53840_det_all_24.03.2026.zip",
+        "award_date": "2026-01-01"
       },
       {
-        "source_dataset": "incarichi_test",
-        "source_record_id": "rec006",
-        "source_url": "https://example.it/fonte6",
-        "entity_id": "c_a944"
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "37ee648a034343e01abe42b9159a75913084c9d55da16231ddb1ed391698e304",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3600205/CIG-BB339DFC99_Det-aut-aff-diretto_17.04.2026.zip",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "29667ea4bf03598cb178c8171db505ecc70784d4c2a464245d77ea7282ab86bd",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3610001/CIG-BB4FD3B5D5_Det-aut-aff-diretto_21.04.2026.zip",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "486a624495274a0a3ee34d06913049ff26ce265f728a9eccc2b46d3c1ad12721",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3730006/CIG-BBD2569E3E_Det-aut-aff-diretto_28.05.2026.zip",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "c5901fc085c07a975d275fad85af31ba4ab29ce2f45e48b09dd5a788932f6437",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3729862/CIG-BBD25F3024_Det-aut-aff-diretto_28.05.2026.zip",
+        "award_date": "2026-01-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "c2941ab248b0789576fc37058b5d51f877f26f1f3d621c79f7c84695f86a9050",
+        "source_url": "https://www.aifa.gov.it/documents/20142/3610001/CIG-BB4FD3B5D5_Det-aut-aff-diretto_21.04.2026.zip",
+        "award_date": "2026-01-01"
       }
     ],
-    "period": "2025",
-    "rule_id": "REGOLA-001",
-    "why_worth_checking": "Concentrazione di 6 incarichi su enti diversi nello stesso anno solare (soglia >= 5).",
+    "period": "2025-08-12..2026-08-12",
+    "rule_id": "REGOLA-002",
+    "why_worth_checking": "Lo stesso aggiudicatario riceve 10 affidamenti diretti dallo stesso ente nei 12 mesi mobili fino al 2026-08-12 (soglia >= 8).",
     "what_cannot_be_claimed": [
       "Nessuna responsabilità individuale",
       "Nessun illecito, frode, corruzione o spreco",
@@ -143,50 +186,86 @@
       "Nessun confronto tra perimetri contabili diversi"
     ],
     "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
-    "data_through": "2025-08-15",
-    "snapshot_created_at": "2025-07-01",
-    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
-    "priority_score": 0.0,
-    "priority_reasons": [],
-    "ranking_date": "2025-08-15",
+    "data_through": "2026-08-12",
+    "snapshot_created_at": "2026-08-25",
+    "explorer_sha": "38fadd790442701322b57b357074df2be178da2a92e9b4a883912fd40bbcc8eb",
+    "priority_score": 20.5,
+    "priority_reasons": [
+      "affidamenti diretti ripetuti: 10"
+    ],
+    "ranking_date": "2026-08-12",
     "ranking_version": "0.1",
     "rank_position": 2
   },
   {
-    "id": "LEAD-REGOLA-003-12104d4b44",
-    "title": "CIG collegato a 3 enti distinti senza spiegazione esplicita nella fonte",
+    "id": "LEAD-REGOLA-002-fe86830e40",
+    "title": "Aggiudicatario riceve 9 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)",
     "observed_facts": [
-      "CIG: Z1234567890",
-      "Numero di enti distinti: 3",
-      "Soglia della regola: >= 2",
-      "La fonte non fornisce spiegazione esplicita del collegamento multiplo"
+      "Aggiudicatario: ING. GIOVANNI MALESCI",
+      "Ente: m_dg",
+      "Numero di affidamenti diretti: 9",
+      "Finestra di osservazione: 12 mesi mobili fino al 2026-08-12",
+      "Soglia della regola: >= 8"
     ],
     "sources": [
       {
-        "source_dataset": "cig_test",
-        "source_record_id": "c001",
-        "source_url": "https://example.it/c1",
-        "subject": "c_h501",
-        "explanation": ""
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "f91e73bcd04d044d815ad2bd43fd23a6d036c69f928aef7daa43a9734c110016",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2025-11-13"
       },
       {
-        "source_dataset": "cig_test",
-        "source_record_id": "c002",
-        "source_url": "https://example.it/c2",
-        "subject": "c_f205",
-        "explanation": ""
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "b3040e3e0f79876f26665f3c4a2d4e6bfd3c0cda390cfa4107a20632becb0144",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2025-11-13"
       },
       {
-        "source_dataset": "cig_test",
-        "source_record_id": "c003",
-        "source_url": "https://example.it/c3",
-        "subject": "c_f839",
-        "explanation": ""
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "f40b52540110d38df6d795c69825fad15f62acb63c3701a68aae70a8f30e8c0d",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2025-11-14"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "2da14ddfdd74b17577b2026e20d59c2d9f99c59ca824d47ecffd4e324fa50d79",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-04-27"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "a24897c01395df3a55181f8053e2abf6ab663847660fc769a72d7f6339aff221",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-04-27"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "aa0ff63d2ff462b757c9432a62b314fac16158bfd178abcc08aef158ffdf72cb",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-05-08"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "59abda176d88a5e02a76b6bae6e8b80421b6c7ba7e2a8b4571fc20948123fed0",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-06-09"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "e09f75c8c4b4288dfa8b7c7f3c3dc7fb89e74a8fad41313a911ed3d3e7e2e6ba",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-07-01"
+      },
+      {
+        "source_dataset": "affidamenti-diretti",
+        "source_record_id": "750d74a32485e42137e06ff8ee4b1da922a6d47246a736899d856493e6701911",
+        "source_url": "https://www.giustizia.it/giustizia/page/it/scheda_di_sintesi_gare_o_contratti?contentId=SBG1437003",
+        "award_date": "2026-07-01"
       }
     ],
-    "period": "intero periodo coperto dal dataset",
-    "rule_id": "REGOLA-003",
-    "why_worth_checking": "Lo stesso CIG risulta collegato a 3 enti distinti senza spiegazione esplicita nella fonte (soglia >= 2).",
+    "period": "2025-08-12..2026-08-12",
+    "rule_id": "REGOLA-002",
+    "why_worth_checking": "Lo stesso aggiudicatario riceve 9 affidamenti diretti dallo stesso ente nei 12 mesi mobili fino al 2026-08-12 (soglia >= 8).",
     "what_cannot_be_claimed": [
       "Nessuna responsabilità individuale",
       "Nessun illecito, frode, corruzione o spreco",
@@ -194,12 +273,14 @@
       "Nessun confronto tra perimetri contabili diversi"
     ],
     "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
-    "data_through": "2025-08-15",
-    "snapshot_created_at": "2025-07-01",
-    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
-    "priority_score": 0.0,
-    "priority_reasons": [],
-    "ranking_date": "2025-08-15",
+    "data_through": "2026-08-12",
+    "snapshot_created_at": "2026-08-25",
+    "explorer_sha": "38fadd790442701322b57b357074df2be178da2a92e9b4a883912fd40bbcc8eb",
+    "priority_score": 18.2,
+    "priority_reasons": [
+      "affidamenti diretti ripetuti: 9"
+    ],
+    "ranking_date": "2026-08-12",
     "ranking_version": "0.1",
     "rank_position": 3
   }
