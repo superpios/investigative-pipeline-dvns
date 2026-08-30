@@ -1,0 +1,206 @@
+[
+  {
+    "id": "LEAD-REGOLA-002-f6d2b63bce",
+    "title": "Aggiudicatario riceve 9 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2025-08-15)",
+    "observed_facts": [
+      "Aggiudicatario: ACME SRL",
+      "Ente: c_h501",
+      "Numero di affidamenti diretti: 9",
+      "Finestra di osservazione: 12 mesi mobili fino al 2025-08-15",
+      "Soglia della regola: >= 8"
+    ],
+    "sources": [
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a001",
+        "source_url": "https://example.it/a1",
+        "award_date": "2025-01-15"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a002",
+        "source_url": "https://example.it/a2",
+        "award_date": "2025-02-20"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a003",
+        "source_url": "https://example.it/a3",
+        "award_date": "2025-03-10"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a004",
+        "source_url": "https://example.it/a4",
+        "award_date": "2025-04-05"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a005",
+        "source_url": "https://example.it/a5",
+        "award_date": "2025-05-12"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a006",
+        "source_url": "https://example.it/a6",
+        "award_date": "2025-06-18"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a007",
+        "source_url": "https://example.it/a7",
+        "award_date": "2025-07-22"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a008",
+        "source_url": "https://example.it/a8",
+        "award_date": "2025-08-01"
+      },
+      {
+        "source_dataset": "awards_test",
+        "source_record_id": "a009",
+        "source_url": "https://example.it/a9",
+        "award_date": "2025-08-15"
+      }
+    ],
+    "period": "2024-08-15..2025-08-15",
+    "rule_id": "REGOLA-002",
+    "why_worth_checking": "Lo stesso aggiudicatario riceve 9 affidamenti diretti dallo stesso ente nei 12 mesi mobili fino al 2025-08-15 (soglia >= 8).",
+    "what_cannot_be_claimed": [
+      "Nessuna responsabilità individuale",
+      "Nessun illecito, frode, corruzione o spreco",
+      "Nessuna risoluzione di omonimie",
+      "Nessun confronto tra perimetri contabili diversi"
+    ],
+    "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+    "data_through": "2025-08-15",
+    "snapshot_created_at": "2025-07-01",
+    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+    "priority_score": 18.2,
+    "priority_reasons": [
+      "affidamenti diretti ripetuti: 9"
+    ],
+    "ranking_date": "2025-08-15",
+    "ranking_version": "0.1",
+    "rank_position": 1
+  },
+  {
+    "id": "LEAD-REGOLA-001-d5dfcc9955",
+    "title": "Nominativo presente in 6 incarichi su enti diversi – anno 2025",
+    "observed_facts": [
+      "Nominativo normalizzato: MARIO ROSSI",
+      "Numero di enti distinti: 6",
+      "Anno solare: 2025",
+      "Soglia della regola: >= 5"
+    ],
+    "sources": [
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec001",
+        "source_url": "https://example.it/fonte1",
+        "entity_id": "c_h501"
+      },
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec002",
+        "source_url": "https://example.it/fonte2",
+        "entity_id": "c_f205"
+      },
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec003",
+        "source_url": "https://example.it/fonte3",
+        "entity_id": "c_f839"
+      },
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec004",
+        "source_url": "https://example.it/fonte4",
+        "entity_id": "c_l219"
+      },
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec005",
+        "source_url": "https://example.it/fonte5",
+        "entity_id": "c_d612"
+      },
+      {
+        "source_dataset": "incarichi_test",
+        "source_record_id": "rec006",
+        "source_url": "https://example.it/fonte6",
+        "entity_id": "c_a944"
+      }
+    ],
+    "period": "2025",
+    "rule_id": "REGOLA-001",
+    "why_worth_checking": "Concentrazione di 6 incarichi su enti diversi nello stesso anno solare (soglia >= 5).",
+    "what_cannot_be_claimed": [
+      "Nessuna responsabilità individuale",
+      "Nessun illecito, frode, corruzione o spreco",
+      "Nessuna risoluzione di omonimie",
+      "Nessun confronto tra perimetri contabili diversi"
+    ],
+    "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+    "data_through": "2025-08-15",
+    "snapshot_created_at": "2025-07-01",
+    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+    "priority_score": 0.0,
+    "priority_reasons": [],
+    "ranking_date": "2025-08-15",
+    "ranking_version": "0.1",
+    "rank_position": 2
+  },
+  {
+    "id": "LEAD-REGOLA-003-12104d4b44",
+    "title": "CIG collegato a 3 enti distinti senza spiegazione esplicita nella fonte",
+    "observed_facts": [
+      "CIG: Z1234567890",
+      "Numero di enti distinti: 3",
+      "Soglia della regola: >= 2",
+      "La fonte non fornisce spiegazione esplicita del collegamento multiplo"
+    ],
+    "sources": [
+      {
+        "source_dataset": "cig_test",
+        "source_record_id": "c001",
+        "source_url": "https://example.it/c1",
+        "subject": "c_h501",
+        "explanation": ""
+      },
+      {
+        "source_dataset": "cig_test",
+        "source_record_id": "c002",
+        "source_url": "https://example.it/c2",
+        "subject": "c_f205",
+        "explanation": ""
+      },
+      {
+        "source_dataset": "cig_test",
+        "source_record_id": "c003",
+        "source_url": "https://example.it/c3",
+        "subject": "c_f839",
+        "explanation": ""
+      }
+    ],
+    "period": "intero periodo coperto dal dataset",
+    "rule_id": "REGOLA-003",
+    "why_worth_checking": "Lo stesso CIG risulta collegato a 3 enti distinti senza spiegazione esplicita nella fonte (soglia >= 2).",
+    "what_cannot_be_claimed": [
+      "Nessuna responsabilità individuale",
+      "Nessun illecito, frode, corruzione o spreco",
+      "Nessuna risoluzione di omonimie",
+      "Nessun confronto tra perimetri contabili diversi"
+    ],
+    "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+    "data_through": "2025-08-15",
+    "snapshot_created_at": "2025-07-01",
+    "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+    "priority_score": 0.0,
+    "priority_reasons": [],
+    "ranking_date": "2025-08-15",
+    "ranking_version": "0.1",
+    "rank_position": 3
+  }
+]
