@@ -100,10 +100,16 @@ fi
 
 echo "==> [3/4] Rank leads + history"
 python3 repos/alert/scripts/rank_leads.py \
-  --input leads \
-  --output ranked \
-  --history history \
-  --rules repos/alert/rules/ranking_v0.1.yaml
+
+  --input leads \
+
+  --output ranked \
+
+  --history history \
+
+  --rules repos/alert/rules/ranking_v0.1.yaml \
+
+  --entity-config repos/alert/config/entity_names.yaml
 
 echo "==> [4/4] Export feed (optional)"
 if [ -f ranked/ranked_leads.json ]; then
