@@ -150,17 +150,12 @@ jobs:
       - name: Step 3 — Rank leads + update history
         run: |
           # rank_leads exits 0 even with zero leads (fail-closed content)
-              python alert/scripts/rank_leads.py \
-
-            --input work/leads \
-
-            --output work/ranked \
-
-            --history work/history \
-
-            --rules alert/rules/ranking_v0.1.yaml \
-
-            --entity-config alert/config/entity_names.yaml
+          python alert/scripts/rank_leads.py \
+            --input work/leads \
+            --output work/ranked \
+            --history work/history \
+            --rules alert/rules/ranking_v0.1.yaml \
+            --entity-config alert/config/entity_names.yaml
           ls -la work/ranked/ work/history/ || true
           if [ -f work/ranked/ranked_leads.json ]; then
             python -c "
