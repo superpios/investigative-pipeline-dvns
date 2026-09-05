@@ -107,18 +107,18 @@ jobs:
             echo "Using live Explorer relations: $REL"
           fi
          missing=0for f in persona_incarico_ente__incarichi_nominativi_shard.csv \
-awards__affidamenti_diretti.csv \
-cig_ente__affidamenti_diretti.csv; do
-if [ ! -f "$REL/$f" ]; then
-echo "::error::Missing required relation file: $REL/$f"
-missing=1
-fi
-done
-if [ "$missing" != 0 ]; then
-echo "::error::Fail-closed: required Explorer relation CSVs are missing."
-exit 1
-fi
-echo "path=$REL" >> "$GITHUB_OUTPUT"
+         awards__affidamenti_diretti.csv \
+         cig_ente__affidamenti_diretti.csv; do
+         if [ ! -f "$REL/$f" ]; then
+        echo "::error::Missing required relation file: $REL/$f"
+        missing=1
+        fi
+        done
+        if [ "$missing" != 0 ]; then
+        echo "::error::Fail-closed: required Explorer relation CSVs are missing."
+        exit 1
+        fi
+        echo "path=$REL" >> "$GITHUB_OUTPUT"
 
       - name: Step 1 — Adapt Explorer relations → generator input
         run: |
