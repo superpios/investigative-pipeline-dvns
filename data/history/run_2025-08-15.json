@@ -76,10 +76,19 @@
         "Nessuna risoluzione di omonimie",
         "Nessun confronto tra perimetri contabili diversi"
       ],
-      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2025-08-15",
       "snapshot_created_at": "2025-07-01",
       "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+      "data_quality": "ok",
+      "data_quality_flags": [],
+      "award_date_min": "2025-01-15",
+      "award_date_max": "2025-08-15",
+      "unique_award_dates": 9,
+      "unique_source_urls": 9,
+      "entity_id": "c_h501",
+      "entity_label": "c_h501",
+      "context_tags": [],
       "priority_score": 18.2,
       "priority_reasons": [
         "affidamenti diretti ripetuti: 9"
@@ -144,12 +153,25 @@
         "Nessuna risoluzione di omonimie",
         "Nessun confronto tra perimetri contabili diversi"
       ],
-      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2025-08-15",
       "snapshot_created_at": "2025-07-01",
       "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+      "data_quality": "weak",
+      "data_quality_flags": [
+        "no_award_dates"
+      ],
+      "award_date_min": "",
+      "award_date_max": "",
+      "unique_award_dates": 0,
+      "unique_source_urls": 6,
+      "entity_id": "",
+      "entity_label": "",
+      "context_tags": [],
       "priority_score": 0.0,
-      "priority_reasons": [],
+      "priority_reasons": [
+        "malus data_quality weak (-10.0)"
+      ],
       "ranking_date": "2025-08-15",
       "ranking_version": "0.1",
       "rank_position": 2
@@ -195,12 +217,25 @@
         "Nessuna risoluzione di omonimie",
         "Nessun confronto tra perimetri contabili diversi"
       ],
-      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.",
+      "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2025-08-15",
       "snapshot_created_at": "2025-07-01",
       "explorer_sha": "792a9d0eb3fc478d34a83b2af1f4de6acb02bf59bfe970bc7580c0403cfb3cad",
+      "data_quality": "weak",
+      "data_quality_flags": [
+        "no_award_dates"
+      ],
+      "award_date_min": "",
+      "award_date_max": "",
+      "unique_award_dates": 0,
+      "unique_source_urls": 3,
+      "entity_id": "",
+      "entity_label": "",
+      "context_tags": [],
       "priority_score": 0.0,
-      "priority_reasons": [],
+      "priority_reasons": [
+        "malus data_quality weak (-10.0)"
+      ],
       "ranking_date": "2025-08-15",
       "ranking_version": "0.1",
       "rank_position": 3
