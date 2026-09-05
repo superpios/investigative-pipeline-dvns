@@ -6,36 +6,43 @@ Totale piste: **3**
 
 ---
 
-## #1 — score 18.2
+## #1 — score 15.0
 
-**Aggiudicatario riceve 9 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2025-08-15)**
+**Aggiudicatario riceve 12 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)**
 
-- ID: `LEAD-REGOLA-002-f6d2b63bce`
+- ID: `LEAD-REGOLA-002-4458183d69`
 - Regola: `REGOLA-002`
-- Periodo: 2024-08-15..2025-08-15
-- Ente: `c_h501`
-- Qualità dati: `ok`
-- URL sorgente distinte: 9
-- Date affidamenti nelle fonti: 2025-01-15 → 2025-08-15
+- Periodo: 2025-08-12..2026-08-12
+- Ente: **Ministero delle Infrastrutture e dei Trasporti** (`m_inf`)
+- Qualità dati: `weak`
+  - flag: all_award_dates_identical
+- URL sorgente distinte: 12
+- Date affidamenti nelle fonti: 2026-01-01
+- Contesto: possible_structural_relationship
 - Motivi prioritizzazione:
-  - affidamenti diretti ripetuti: 9
+  - affidamenti diretti ripetuti: 12
+  - malus data_quality weak (-10.0)
+  - contesto: possibile rapporto strutturale PA–soggetto
 
 Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.
 
 
 ---
 
-## #2 — score 0.0
+## #2 — score 10.5
 
-**Nominativo presente in 6 incarichi su enti diversi – anno 2025**
+**Aggiudicatario riceve 10 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)**
 
-- ID: `LEAD-REGOLA-001-d5dfcc9955`
-- Regola: `REGOLA-001`
-- Periodo: 2025
+- ID: `LEAD-REGOLA-002-d38732c5f5`
+- Regola: `REGOLA-002`
+- Periodo: 2025-08-12..2026-08-12
+- Ente: **Agenzia Italiana del Farmaco - AIFA** (`aifa_rm`)
 - Qualità dati: `weak`
-  - flag: no_award_dates
-- URL sorgente distinte: 6
+  - flag: all_award_dates_identical
+- URL sorgente distinte: 9
+- Date affidamenti nelle fonti: 2026-01-01
 - Motivi prioritizzazione:
+  - affidamenti diretti ripetuti: 10
   - malus data_quality weak (-10.0)
 
 Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.
@@ -43,17 +50,20 @@ Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali qu
 
 ---
 
-## #3 — score 0.0
+## #3 — score 8.2
 
-**CIG collegato a 3 enti distinti senza spiegazione esplicita nella fonte**
+**Aggiudicatario riceve 9 affidamenti diretti dallo stesso ente – 12 mesi mobili (fino al 2026-08-12)**
 
-- ID: `LEAD-REGOLA-003-12104d4b44`
-- Regola: `REGOLA-003`
-- Periodo: intero periodo coperto dal dataset
+- ID: `LEAD-REGOLA-002-fe86830e40`
+- Regola: `REGOLA-002`
+- Periodo: 2025-08-12..2026-08-12
+- Ente: **Ministero della Giustizia** (`m_dg`)
 - Qualità dati: `weak`
-  - flag: no_award_dates
-- URL sorgente distinte: 3
+  - flag: single_source_url_repeated
+- URL sorgente distinte: 1
+- Date affidamenti nelle fonti: 2025-11-13 → 2026-07-01
 - Motivi prioritizzazione:
+  - affidamenti diretti ripetuti: 9
   - malus data_quality weak (-10.0)
 
 Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.
