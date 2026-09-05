@@ -95,8 +95,17 @@ jobs:
           if [ -d coordinator/data/history ]; then
             cp -a coordinator/data/history/. work/history/ || true
           fi
-
-      missing=0for f in persona_incarico_ente__incarichi_nominativi_shard.csv \
+- name: Select relations sourceid: relations
+run: |
+if [ "${{ github.event.inputs.use_fixture_data }}" = "true" ]; then
+REL="coordinator/testdata/relations"
+echo "Using fixture data: $REL"
+else
+REL="explorer/data/relations"
+echo "Using live Explorer relations: $REL"
+fi
+missing=0
+for f in persona_incarico_ente__incarichi_nominativi_shard.csv \
 awards__affidamenti_diretti.csv \
 cig_ente__affidamenti_diretti.csv; do
 if [ ! -f "$REL/$f" ]; then
