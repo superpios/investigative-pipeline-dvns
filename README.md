@@ -1,117 +1,89 @@
-# DVNS Investigative Pipeline (coordinator)
+# Investigative Pipeline · DVNS
 
 Pipeline automatica end-to-end che collega i tre componenti investigativi:
 
 ```
-Explorer (relations) → Leads Generator (piste conservative) → Alert Engine (ranking + storico)
+Explorer → Leads Generator → Alert Engine
 ```
 
-**Filosofia vincolante**  
-Ogni output è un *segnale quantitativo che merita verifica umana*.  
+Produce un feed prioritizzato di **piste conservative** a partire dalle relazioni documentate sui dati pubblici di [DoveVannoINostriSoldi](https://github.com/Italian-Builders-Org/DoveVannoINostriSoldi).
+
+Ogni output è un segnale quantitativo che **merita verifica umana**.  
 Nessuna conclusione automatica di illecito, spreco, frode o responsabilità individuale.
 
-Collegato a:
-- [investigative-explorer-dvns](https://github.com/superpios/investigative-explorer-dvns)
-- [investigative-leads-generator](https://github.com/superpios/investigative-leads-generator)
-- [investigative-alert-engine](https://github.com/superpios/investigative-alert-engine)
-- [DoveVannoINostriSoldi](https://github.com/Italian-Builders-Org/DoveVannoINostriSoldi)
+## Componenti collegati
 
----
+| Componente | Ruolo |
+|------------|--------|
+| [investigative-explorer-dvns](https://github.com/superpios/investigative-explorer-dvns) | Relazioni documentate da dati pubblici |
+| [investigative-leads-generator](https://github.com/superpios/investigative-leads-generator) | Piste conservative (regole dichiarative, fail-closed) |
+| [investigative-alert-engine](https://github.com/superpios/investigative-alert-engine) | Ranking, storico e feed prioritizzato |
 
-## Perché questo approccio (24/7 senza PC acceso)
+## Cosa fa
 
-| Requisito | Soluzione |
-|-----------|-----------|
-| PC sempre acceso | **No** — GitHub Actions su repo pubblico |
-| Costo | **0 €** (minuti illimitati su public repos) |
-| Accessibile dal mondo | Artifact + branch `data` / GitHub Pages |
-| Deterministico / fail-closed | Ereditato dai tre motori originali |
-| Auditabile | Log GHA + `scripts/audit_output.py` + manifest |
+1. Adatta le tabelle di relazione dell’Explorer
+2. Applica le regole del Leads Generator
+3. Esegue il ranking dell’Alert Engine
+4. Aggiorna lo storico e pubblica il feed (`ranked_leads.json`, `feed.md`)
 
-Alternative complementari (dopo ranking):
-- Chiamata on-demand a **Groq** sulle top 5–10 piste per bozza di verifica (solo quando serve).
-- Cloudflare Workers / Pages per esporre il feed statico.
+Il ciclo è **deterministico** e **fail-closed**: stesso input → stesso output; input non validi interrompono la pipeline senza inventare risultati.
 
----
-
-## Uso locale (smoke test con fixture)
+## Uso locale
 
 ```bash
-git clone https://github.com/superpios/investigative-pipeline-dvns
+git clone https://github.com/superpios/investigative-pipeline-dvns.git
 cd investigative-pipeline-dvns
-chmod +x scripts/run_pipeline.sh
-./scripts/run_pipeline.sh --fixture
+bash scripts/run_pipeline.sh --fixture
 ```
 
-Output in `output/ranked/ranked_leads.json` e `output/ranked/feed.md`.
+Output in `output/ranked/`.
 
-Per dati reali dell'Explorer:
+Per dati reali dell’Explorer:
 
 ```bash
-./scripts/run_pipeline.sh
+bash scripts/run_pipeline.sh
 # oppure
-RELATIONS_DIR=/path/to/explorer/data/relations ./scripts/run_pipeline.sh
+RELATIONS_DIR=/path/to/explorer/data/relations bash scripts/run_pipeline.sh
 ```
 
----
+Dipendenze: Python 3.11+, `pyyaml`, `pandas`.
 
-## Uso su GitHub Actions (produzione)
+## GitHub Actions
 
-1. Crea un repository pubblico (es. `superpios/investigative-pipeline-dvns`).
-2. Copia il contenuto di questa cartella.
-3. Abilita Actions.
-4. Il workflow `.github/workflows/pipeline.yml`:
-   - gira **ogni giorno alle 03:00 UTC** (cron)
-   - può essere lanciato manualmente (`workflow_dispatch`)
-   - supporta `use_fixture_data=true` per smoke test
-   - carica artifact `dvns-ranked-<run_id>`
-   - opzionalmente pubblica `data/ranked/` sul branch main
+Il workflow `.github/workflows/pipeline.yml`:
+
+- gira ogni giorno alle **03:00 UTC**
+- può essere avviato manualmente (`workflow_dispatch`)
+- supporta smoke test con dati di esempio (`use_fixture_data=true`)
+- carica gli artifact della run
+- opzionalmente aggiorna `data/ranked/` su `main`
 
 Nessun secret obbligatorio per il ciclo base (solo dati pubblici).
 
----
+### Avvio manuale
 
-## Cosa produce
+1. Tab **Actions** → **DVNS Investigative Pipeline** → **Run workflow**
+2. Smoke test: `use_fixture_data = true`
+3. Dati reali: `use_fixture_data = false`
+
+## Output
 
 | File | Descrizione |
 |------|-------------|
-| `ranked_leads.json` | Lista ordinata per `priority_score` (0–100) |
+| `ranked_leads.json` | Piste ordinate per `priority_score` (0–100) |
 | `feed.md` | Report leggibile |
-| `history/run_<data_through>.json` | Snapshot per calcolo persistenza |
-| `leads/manifest.json` | Stato esecuzione generator (ok/failed, hash input) |
+| `history/run_DATA.json` | Snapshot per il calcolo della persistenza |
+| `leads/manifest.json` | Stato dell’esecuzione del generatore |
 
-Ogni pista contiene sempre: `id`, `title`, `observed_facts`, `sources`, `period`, `rule_id`, `why_worth_checking`, `what_cannot_be_claimed`, `disclaimer`, `priority_score`, `priority_reasons`, `rank_position`.
+Ogni pista include sempre: `id`, `title`, `observed_facts`, `sources`, `period`, `rule_id`, `why_worth_checking`, `what_cannot_be_claimed`, `disclaimer`, `priority_score`, `priority_reasons`, `rank_position`.
 
----
+## Principi
 
-## Validazione e audit (eseguiti in sandbox)
-
-Vedi `docs/AUDIT.md` per il report completo.
-
-Sintesi dei test eseguiti (30 ago 2026):
-
-| Test | Esito |
-|------|-------|
-| Adapt Explorer → CSV generator | PASS (3 file) |
-| Apply rules (fixture) | PASS → 3 piste (REGOLA-001/002/003) |
-| Ranking + history | PASS → ranked_leads.json |
-| Determinismo (2 run, stesso SHA-256) | PASS |
-| Fail-closed (input vuoto → exit 1 + manifest) | PASS |
-| Schema obbligatorio + disclaimer | PASS |
-| Nessuna etichetta valutativa proibita | PASS |
-
-**Nota ranking**: le euristiche di score leggono gli `observed_facts`. Con le regole attuali REGOLA-002 (9 affidamenti) ottiene score > 0; REGOLA-001/003 possono restare a 0 se le keyword non matchano — comportamento conservativo documentato in `ranking_v0.1.yaml`.
-
----
+- Solo dati pubblici, con fonte e limiti visibili
+- Nessuna etichetta valutativa (illecito, frode, spreco, responsabilità)
+- Nessun totale o collegamento non supportato dagli atti/dati sorgente
+- Fail-closed su input mancanti o non validi
 
 ## Licenza
 
-I tre motori originali sono AGPL-3.0.  
-Questo coordinator (workflow + script di orchestrazione) è rilasciato sotto la stessa licenza per coerenza, salvo diversa indicazione nei file.
-
----
-
-## Disclaimer
-
-Questo non dimostra alcun illecito. Indica solo concentrazioni quantitative che meritano verifica umana.  
-I dati trattati sono pubblici; nessun dato personale non già pubblicato nelle fonti ufficiali viene introdotto dalla pipeline.
+GNU Affero General Public License v3.0 — allineata ai componenti collegati.
