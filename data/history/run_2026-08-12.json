@@ -96,8 +96,8 @@
       ],
       "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2026-08-12",
-      "snapshot_created_at": "2026-10-10",
-      "explorer_sha": "d442c88c29ceb5657ae73ba838b33f256d2ef812ddb6b948ad9b7ab0a1430e5d",
+      "snapshot_created_at": "2026-10-11",
+      "explorer_sha": "57bab489086b2e697180e85f2f201a827a661956b0c51547d5b16bfb60535478",
       "data_quality": "weak",
       "data_quality_flags": [
         "all_award_dates_identical"
@@ -204,8 +204,8 @@
       ],
       "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2026-08-12",
-      "snapshot_created_at": "2026-10-10",
-      "explorer_sha": "d442c88c29ceb5657ae73ba838b33f256d2ef812ddb6b948ad9b7ab0a1430e5d",
+      "snapshot_created_at": "2026-10-11",
+      "explorer_sha": "57bab489086b2e697180e85f2f201a827a661956b0c51547d5b16bfb60535478",
       "data_quality": "weak",
       "data_quality_flags": [
         "all_award_dates_identical"
@@ -303,8 +303,8 @@
       ],
       "disclaimer": "Questo non dimostra alcun illecito. Indica solo una concentrazione di segnali quantitativi che merita verifica umana.\n",
       "data_through": "2026-08-12",
-      "snapshot_created_at": "2026-10-10",
-      "explorer_sha": "d442c88c29ceb5657ae73ba838b33f256d2ef812ddb6b948ad9b7ab0a1430e5d",
+      "snapshot_created_at": "2026-10-11",
+      "explorer_sha": "57bab489086b2e697180e85f2f201a827a661956b0c51547d5b16bfb60535478",
       "data_quality": "weak",
       "data_quality_flags": [
         "single_source_url_repeated"
