@@ -12,7 +12,9 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FIXED_RUNNER="$SCRIPT_DIR/run_pipeline.sh"
 
-BASE="$(pwd)/dvns-ecosystem"
+# Shared path (same default as start_explorer.sh); override with DVNS_ECOSYSTEM
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+BASE="${DVNS_ECOSYSTEM:-$REPO_ROOT/dvns-ecosystem}"
 mkdir -p "$BASE"
 cd "$BASE"
 

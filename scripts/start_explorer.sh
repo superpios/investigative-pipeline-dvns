@@ -2,7 +2,10 @@
 # Avvio rapido Explorer locale
 set -euo pipefail
 
-ECOSYSTEM="$(cd "$(dirname "$0")" && pwd)/dvns-ecosystem"
+# Shared path (same default as setup_ecosystem.sh); override with DVNS_ECOSYSTEM
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+ECOSYSTEM="${DVNS_ECOSYSTEM:-$REPO_ROOT/dvns-ecosystem}"
 if [ ! -d "$ECOSYSTEM/investigative-explorer-dvns" ]; then
   echo "Esegui prima setup_ecosystem.sh"
   exit 1
