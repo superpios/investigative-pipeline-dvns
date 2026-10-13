@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-# Local / CI runner for the full DVNS investigative cycle.
+# =============================================================================
+# Investigative Pipeline · DVNS
+# Runner end-to-end: Explorer relations → Leads Generator → Alert Engine
+#
 # Usage:
-#   ./scripts/run_pipeline.sh                  # uses live clones
-#   ./scripts/run_pipeline.sh --fixture        # uses testdata/relations
-#   RELATIONS_DIR=/path/to/relations ./scripts/run_pipeline.sh
+#   ./run_pipeline.sh                  # uses live clones of component repos
+#   ./run_pipeline.sh --fixture        # uses testdata/relations (smoke test)
+#   RELATIONS_DIR=/path/to/relations ./run_pipeline.sh
 #
 # Exit codes:
 #   0  success (including zero leads — conservative OK)
 #   1  fail-closed on invalid/missing input
 #   2  missing dependencies or fatal error
-
+# =============================================================================
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -40,8 +43,10 @@ need() {
 need git
 need python3
 
-echo "==> Ensuring Python deps"
-python3 -m pip install -q "pyyaml>=6.0" "pandas>=2.0"
+echo "==> Ensuring Python deps (pyyaml, pandas)"
+python3 -m pip install -q "pyyaml>=6.0" "pandas>=2.0" || {
+  echo "WARNING: pip install failed. Continuing if packages already present."
+}
 
 clone_or_update() {
   local url="$1" dir="$2"
@@ -100,16 +105,11 @@ fi
 
 echo "==> [3/4] Rank leads + history"
 python3 repos/alert/scripts/rank_leads.py \
-
-  --input leads \
-
-  --output ranked \
-
-  --history history \
-
-  --rules repos/alert/rules/ranking_v0.1.yaml \
-
-  --entity-config repos/alert/config/entity_names.yaml
+  --input leads \
+  --output ranked \
+  --history history \
+  --rules repos/alert/rules/ranking_v0.1.yaml \
+  --entity-config repos/alert/config/entity_names.yaml
 
 echo "==> [4/4] Export feed (optional)"
 if [ -f ranked/ranked_leads.json ]; then
@@ -128,11 +128,13 @@ echo ""
 echo "DONE. Outputs in: ${WORK}"
 ls -la ranked/ history/ leads/ 2>/dev/null || true
 if [ -f ranked/ranked_leads.json ]; then
-  python3 -c "
+  python3 - << 'PY'
 import json
-r=json.load(open('ranked/ranked_leads.json'))
-print(f'Ranked leads: {len(r)}')
+from pathlib import Path
+p = Path("ranked/ranked_leads.json")
+r = json.loads(p.read_text(encoding="utf-8"))
+print(f"Ranked leads: {len(r)}")
 for L in r[:15]:
-    print(f\"  #{L.get('rank_position')} score={L.get('priority_score')} {L.get('id')}\")
-"
+    print(f"  #{L.get('rank_position')} score={L.get('priority_score')} {L.get('id')}")
+PY
 fi
